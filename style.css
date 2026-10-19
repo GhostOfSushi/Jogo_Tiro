@@ -1,0 +1,115 @@
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --text: #1c1e21;
+  --muted: #6b7280;
+  --accent: #e63946;
+  --border: #d1d5db;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161a;
+    --card: #1f2228;
+    --text: #f1f3f5;
+    --muted: #9ca3af;
+    --accent: #ff5c6a;
+    --border: #3a3f47;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+h1 { margin: 0; font-size: 1.5rem; }
+
+.painel {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.indicador {
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.indicador span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.indicador strong { font-size: 1.6rem; }
+
+/* Contêiner fechado: position relative + overflow hidden */
+#container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 320px;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#alvo {
+  position: absolute;   /* necessário para usar style.left / style.top */
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 6px solid var(--card);
+  box-shadow: 0 0 0 3px var(--accent);
+  cursor: pointer;
+  display: none;
+}
+
+#alvo:active { transform: scale(0.9); }
+
+#msg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  color: var(--muted);
+}
+
+#iniciar {
+  font: inherit;
+  font-weight: 600;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+#iniciar:disabled { opacity: 0.5; cursor: not-allowed; }
